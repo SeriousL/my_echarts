@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>echarts</title>
+    <style>
+        #main {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/echarts.js"></script>
+    <script>
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            color: ['#3398DB','orange'], // 更换颜色 配置 全局调色盘 会循环   
+            title: {
+                text: '游学后台数据统计',
+                // link: 'http://www.baidu.com'   // 超链接链接
+                // textStyle:{
+                //     color:['green']         // 标题颜色
+                // },
+                textAlign:'left',  // 标题水平位置
+                textBaseline:'top',  // 标题垂直位置
+                left:'center'   // 标题居中
+ 
+            },
+            grid:{
+                show:'true',
+                // z:100
+                // containLabel:'true'
+            },
+            tooltip: {  // 提示框组件
+                trigger:'item'    // 触发类型
+            },
+            toolbox:{ //工具栏组件
+                show:true,
+                feature: {
+                    saveAsImage:{   // 图片导出
+                        type:'png'
+                    },
+                    dataView: {     // 数据统计
+                        show:true
+                    }
+                },
+                left: 'center', // 位置配置
+                bottom:'bottom'
+            },
+            legend: {   // 图例组件配置
+                // data: ['销量']
+                data: ['销量', '统计'],
+                right:'10%', // 位置
+                orient:'vertical', // 布局朝向 默认横向 vertical为纵向
+                // selectedMode:'multiple' // 图例选择模式
+            },
+            xAxis: { // x轴配置
+                name:'种类',
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                axisTick: {
+                    alignWithLabel: true    // x坐标轴  的坐标刻度位置 true 为正中间
+                }
+            },
+            yAxis: {},  // y轴配置
+            series: [{
+                name: '销量',
+                type: 'bar',
+                label:{
+                    normal:{ // 普通样式
+                        show:true,
+                        position:'top'  
+                    },
+                    emphasis: { // 高亮时的样式  标识文字是否显示和位置配置  鼠标选中 hover
+                        show:true,
+                        // position:'bottom' // 
+                    }
+                },
+                data: [50, 20, 36, 10, 10, 20]
+            }, {
+                name: '统计',
+                type: 'bar',
+                label:{
+                    normal:{
+                        show:true,
+                        position:'insideBottom'
+                    }
+                },
+                data: [10, 30, 16, 50, 60, 40]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        
+        myChart.setOption(option);
+        
+        
+    </script>
+</body>
+
+</html>
