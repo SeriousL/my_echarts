@@ -77,11 +77,34 @@
                 label:{
                     normal:{ // 普通样式
                         show:true,
-                        position:'top'  
+                        position:'top'
                     },
                     emphasis: { // 高亮时的样式  标识文字是否显示和位置配置  鼠标选中 hover
                         show:true,
                         // position:'bottom' // 
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        // 渐变色配置
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                {offset: 0, color: 'hotpink'},
+                                {offset: 0.5, color: 'orange'},
+                                {offset: 1, color: 'skyblue'}
+                            ]
+                        )
+                    },
+                    emphasis: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                {offset: 0, color: '#2378f7'},
+                                {offset: 0.7, color: '#2378f7'},
+                                {offset: 1, color: '#83bff6'}
+                            ]
+                        )
                     }
                 },
                 data: [50, 20, 36, 10, 10, 20]
